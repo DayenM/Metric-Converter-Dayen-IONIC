@@ -116,33 +116,6 @@ body {
   }
 }
 
-@media (max-width: 600px) {
-  .ion-padding {
-    padding: 10px;
-  }
-
-  .app-title {
-    font-size: 1.1rem;
-  }
-
-  .app-subtitle {
-    font-size: 0.75rem;
-  }
-
-  .background-box {
-    padding: 10px;
-  }
-
-  .convert-button {
-    height: 35px;
-    font-size: 0.75rem;
-  }
-
-  .result-text {
-    font-size: 0.9rem;
-  }
-}
-
 @media (max-width: 480px) {
   .app-title {
     font-size: 1.2rem;
