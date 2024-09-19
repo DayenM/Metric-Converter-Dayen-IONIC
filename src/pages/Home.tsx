@@ -67,11 +67,7 @@ const Home: React.FC = () => {
 
       // Membulatkan hasil
       if (hasil !== null) {
-        if (Number.isInteger(hasil)) {
-          setHasilKonversi(Math.round(hasil)); // Membulatkan ke bilangan bulat
-        } else {
-          setHasilKonversi(parseFloat(hasil.toFixed(2))); // Tampilkan dua angka di belakang koma
-        }
+        setHasilKonversi(Number.isInteger(hasil) ? Math.round(hasil) : parseFloat(hasil.toFixed(2)));
       }
     }
   };
@@ -166,102 +162,94 @@ const Home: React.FC = () => {
   return (
     <IonPage className="page-container">
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar className="custom-header">
           <IonTitle className="app-title">Metric Converter</IonTitle>
-          <h5 className="app-subtitle">By : Dayen Manoppo</h5>
+          <h5 className="app-copyright">By : Dayen Manoppo</h5>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding content-container">
-        <IonGrid>
-          <IonRow>
-            <IonCol>
-              <IonItem className="input-item">
-                <IonLabel className="input-label">Pilih Metrik :</IonLabel>
-              </IonItem>
-              <IonItem className="input-item">
-                <IonSelect value={metrik} placeholder="Pilih Metrik" onIonChange={(e) => setMetrik(e.detail.value)}>
-                  <IonSelectOption value="panjang">Panjang</IonSelectOption>
-                  <IonSelectOption value="berat">Berat</IonSelectOption>
-                  <IonSelectOption value="suhu">Suhu</IonSelectOption>
-                  <IonSelectOption value="volume">Volume</IonSelectOption>
-                  <IonSelectOption value="luas">Luas</IonSelectOption>
-                  <IonSelectOption value="kecepatan">Kecepatan</IonSelectOption>
-                  <IonSelectOption value="tekanan">Tekanan</IonSelectOption>
-                  <IonSelectOption value="waktu">Waktu</IonSelectOption>
-                </IonSelect>
-              </IonItem>
-            </IonCol>
-          </IonRow>
+        <div className="background-box">
+          <IonGrid>
+            <IonRow>
+              <IonCol>
+                <IonItem className="dark-item">
+                  <IonLabel>Pilih Metrik :</IonLabel>
+                  <IonSelect value={metrik} placeholder="Pilih Metrik" onIonChange={(e) => setMetrik(e.detail.value)}>
+                    <IonSelectOption value="panjang">Panjang</IonSelectOption>
+                    <IonSelectOption value="berat">Berat</IonSelectOption>
+                    <IonSelectOption value="suhu">Suhu</IonSelectOption>
+                    <IonSelectOption value="volume">Volume</IonSelectOption>
+                    <IonSelectOption value="luas">Luas</IonSelectOption>
+                    <IonSelectOption value="kecepatan">Kecepatan</IonSelectOption>
+                    <IonSelectOption value="tekanan">Tekanan</IonSelectOption>
+                    <IonSelectOption value="waktu">Waktu</IonSelectOption>
+                  </IonSelect>
+                </IonItem>
+              </IonCol>
+            </IonRow>
 
-          <IonRow>
-            <IonCol>
-              <IonItem className="input-item">
-                <IonLabel className="input-label">Pilih Satuan Awal :</IonLabel>
-              </IonItem>
-              <IonItem className="input-item">
-                <IonSelect value={satuanAwal} placeholder="Pilih Satuan" onIonChange={(e) => setSatuanAwal(e.detail.value)}>
-                  {daftarSatuan.map((satuan) => (
-                    <IonSelectOption key={satuan} value={satuan}>
-                      {satuan}
-                    </IonSelectOption>
-                  ))}
-                </IonSelect>
-              </IonItem>
-            </IonCol>
-          </IonRow>
-
-          <IonRow>
-            <IonCol>
-              <IonItem className="input-item">
-                <IonLabel className="input-label">Pilih Satuan Tujuan :</IonLabel>
-              </IonItem>
-              <IonItem className="input-item">
-                <IonSelect value={satuanTujuan} placeholder="Pilih Satuan" onIonChange={(e) => setSatuanTujuan(e.detail.value)}>
-                  {daftarSatuan
-                    .filter((satuan) => satuan !== satuanAwal)
-                    .map((satuan) => (
+            <IonRow>
+              <IonCol>
+                <IonItem className="dark-item">
+                  <IonLabel>Pilih Satuan :</IonLabel>
+                  <IonSelect value={satuanAwal} placeholder="Dari" onIonChange={(e) => setSatuanAwal(e.detail.value)}>
+                    {daftarSatuan.map((satuan) => (
                       <IonSelectOption key={satuan} value={satuan}>
                         {satuan}
                       </IonSelectOption>
                     ))}
-                </IonSelect>
-              </IonItem>
-            </IonCol>
-          </IonRow>
+                  </IonSelect>
+                </IonItem>
+              </IonCol>
 
-          <IonRow>
-            <IonCol>
-              <IonItem className="input-item">
-                <IonLabel className="input-label">Masukkan Nilai</IonLabel>
-              </IonItem>
-              <IonItem className="input-item">
-                <IonInput type="number" placeholder="Masukkan Angka" value={nilaiMasukan ?? ''} onIonChange={(e) => setNilaiMasukan(parseFloat(e.detail.value ?? '') || null)} />{' '}
-              </IonItem>
-            </IonCol>
-          </IonRow>
-
-          <IonRow>
-            <IonCol>
-              <IonButton expand="block" className="convert-button" onClick={handleKonversi}>
-                Konversi
-              </IonButton>
-            </IonCol>
-          </IonRow>
-
-          {hasilKonversi !== null && (
-            <IonRow>
               <IonCol>
-                <IonCard className="result-card">
-                  <IonCardContent className="result-content">
-                    <h3 className="result-text">
-                      Hasil : {hasilKonversi} {satuanTujuan}
-                    </h3>
-                  </IonCardContent>
-                </IonCard>
+                <IonItem className="dark-item">
+                  <IonLabel>Pilih Satuan :</IonLabel>
+                  <IonSelect value={satuanTujuan} placeholder="Ke" onIonChange={(e) => setSatuanTujuan(e.detail.value)}>
+                    {daftarSatuan
+                      .filter((satuan) => satuan !== satuanAwal)
+                      .map((satuan) => (
+                        <IonSelectOption key={satuan} value={satuan}>
+                          {satuan}
+                        </IonSelectOption>
+                      ))}
+                  </IonSelect>
+                </IonItem>
               </IonCol>
             </IonRow>
-          )}
-        </IonGrid>
+
+            <IonRow>
+              <IonCol>
+                <IonItem className="dark-item">
+                  <IonLabel position="floating">Masukkan Nilai</IonLabel>
+                  <IonInput type="number" value={nilaiMasukan ?? ''} onIonChange={(e) => setNilaiMasukan(parseFloat(e.detail.value ?? '') || null)} />
+                </IonItem>
+              </IonCol>
+            </IonRow>
+
+            <IonRow>
+              <IonCol>
+                <IonButton expand="block" className="convert-button" onClick={handleKonversi}>
+                  KONVERSI
+                </IonButton>
+              </IonCol>
+            </IonRow>
+
+            {hasilKonversi !== null && (
+              <IonRow>
+                <IonCol>
+                  <IonCard className="result-card">
+                    <IonCardContent className="result-content">
+                      <h3 className="result-text">
+                        Hasil : {hasilKonversi} {satuanTujuan}
+                      </h3>
+                    </IonCardContent>
+                  </IonCard>
+                </IonCol>
+              </IonRow>
+            )}
+          </IonGrid>
+        </div>
       </IonContent>
     </IonPage>
   );

@@ -1,17 +1,11 @@
-/* Latar belakang body dengan tema gelap dan gaya minimalis */
 body {
   --ion-background-color: #121212;
-  --ion-text-color: #f4f4f4;
-  font-family: 'Roboto', sans-serif;
+  --ion-text-color: #ffffff;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
-/* Pusatkan konten dan beri jarak */
 .ion-padding {
   padding: 20px;
   display: flex;
@@ -19,110 +13,155 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #121212;
 }
 
-/* Gaya untuk header */
-ion-header {
-  background-color: #1f1f1f;
+.custom-header {
+  background-color: #1e3a8a;
+  color: white;
   text-align: center;
-  color: #ffffff;
 }
 
 .app-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-.app-subtitle {
-  color: #aaaaaa;
-  font-size: 1rem;
-  font-weight: 300;
-  margin-top: 5px;
-}
-
-/* Pengaturan grid dan elemen dalamnya */
-ion-grid {
-  width: 100%;
-  max-width: 500px;
-}
-
-/* Input dan select dengan sudut melengkung dan transisi halus */
-ion-select,
-ion-input {
-  --background: #2b2b2b;
-  --placeholder-color: #cccccc;
-  --color: #f4f4f4;
-  --padding-start: 16px;
-  border-radius: 15px;
-  border: 1px solid #555;
-  transition: all 0.3s ease;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-ion-select:focus,
-ion-input:focus {
-  border-color: #007bff;
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.5);
-}
-
-/* Tombol konversi dengan gaya dan animasi hover */
-.convert-button {
-  --background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
-  --border-radius: 12px;
-  --color: #ffffff;
-  font-size: 1.2rem;
-  width: 100%;
-  padding: 10px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.convert-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-3px);
-}
-
-/* Kotak hasil konversi dengan gaya yang bersih dan melengkung */
-.result-card {
-  background-color: #1f1f1f;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
-
-.result-content {
-  color: #f4f4f4;
   font-size: 1.5rem;
-  text-align: center;
+  font-weight: bolder;
   padding: 15px;
 }
 
+.app-copyright {
+  color: #cccccc;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.background-box {
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 700px;
+  width: 100%;
+  margin: auto;
+}
+
+.dark-item {
+  --background: #333333;
+  --color: white;
+  --placeholder-color: #b3b3b3;
+  --ion-item-background: #333333;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.dark-item ion-label {
+  color: #b3b3b3;
+}
+
+.dark-item ion-label.ion-focused {
+  color: white;
+}
+
+.convert-button {
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  height: 50px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.result-card {
+  margin-top: 20px;
+  background-color: #2d2d2d;
+  border-radius: 10px;
+}
+
+.result-content {
+  text-align: center;
+  padding: 20px;
+}
+
 .result-text {
+  font-size: 1.5rem;
+  color: #4ade80;
   font-weight: bold;
 }
 
-/* Responsif untuk layar yang lebih kecil */
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ion-padding {
+    padding: 15px;
+  }
+
+  .app-title {
+    font-size: 1.25rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .background-box {
+    padding: 20px;
+  }
+
+  .convert-button {
+    height: 45px;
+    font-size: 0.9rem;
+  }
+
+  .result-text {
+    font-size: 1.25rem;
+  }
+}
+
 @media (max-width: 600px) {
-  ion-grid {
+  .ion-padding {
     padding: 10px;
   }
 
   .app-title {
-    font-size: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .background-box {
+    padding: 10px;
   }
 
   .convert-button {
-    font-size: 1rem;
+    height: 35px;
+    font-size: 0.75rem;
   }
 
-  .result-content {
-    font-size: 1.2rem;
+  .result-text {
+    font-size: 0.9rem;
   }
 }
 
-/* Label input dengan jarak dan warna kontras */
-.input-label {
-  color: #cccccc;
-  font-size: 1.1rem;
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 1.2rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .background-box {
+    padding: 15px;
+  }
+
+  .convert-button {
+    height: 40px;
+    font-size: 0.8rem;
+  }
+
+  .result-text {
+    font-size: 1rem;
+  }
 }

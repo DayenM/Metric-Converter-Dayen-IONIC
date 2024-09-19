@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">MetricConverter</string>
-    <string name="title_activity_main">MetricConverter</string>
-    <string name="package_name">com.MetricConverter</string>
-    <string name="custom_url_scheme">com.MetricConverter</string>
-</resources>
